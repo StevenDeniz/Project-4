@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Color Guessing</title>
+</head>
+<body>
+<script>
+    var intro;
+    var colors = ["blue","red","green","orange","black","white","yellow","purple","grey","pink","aqua"];
+    var target_index = Math.floor((Math.random() * 11));
+    var comp_choice = colors[target_index];
+     comp_choice = comp_choice.toUpperCase();
+
+    try {
+
+        do {
+            intro = prompt("I am thinking of one of these colors:" +
+                    "\nblue, red, green, orange, black, white, yellow, purple, grey, pink, aqua\n" +
+                    "What color am I thinking of?");
+             intro = intro.toUpperCase();
+
+
+            if (colors.indexOf(intro.toLowerCase()) > -1) {
+
+                if (comp_choice == intro) {
+                    var myBody = document.getElementsByTagName("body")[0];
+                    myBody.style.background = comp_choice;
+                    alert("You guessed right");
+                }
+
+                else if (comp_choice > intro)
+                    alert("Sorry wrong guess" +
+                            "\nHint: your color is alphabetically lower than mine\n");
+
+                else if (comp_choice < intro)
+                    alert("Sorry wrong guess" +
+                            "\nHint: your color is alphabetically higher than mine\n");
+
+            }
+
+            else {
+                if (comp_choice !== intro)
+                alert("Invalid input try again");
+            }
+
+
+        } while (comp_choice > intro || (comp_choice < intro));
+    }
+    catch (err) {
+        console.log(err);
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
